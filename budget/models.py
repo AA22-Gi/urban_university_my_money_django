@@ -2,6 +2,14 @@ from django.db import models
 
 
 class Transaction(models.Model):
+    """
+    Модель для представления финансовых транзакции.
+    Атрибуты:
+        title (str): Описание транзакции.
+        amount (floot): Сумма транзакции (максимум 10 цифр, 2 из которых после запятой).
+        transaction_type (str): Тип транзакции (может быть 'income' (Доход) или 'expense' (Расход)).
+        date (DateField): Дата создания транзакции (устанавливается автоматически при добавлении).
+    """
     TRANSACTION_TYPES = (
         ('income', 'Доход'),
         ('expense', 'Расход'),
