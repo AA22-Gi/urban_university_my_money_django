@@ -23,7 +23,7 @@
         <tr>
             <td>{{ transaction }}</td>
             <td>{{ transaction.amount }}</td>
-            <td>{{ transaction.transaction_type }}</td>
+            <td>{{ transaction.get_transaction_type_display }}</td>
             <td>{{ transaction.date }}</td>
         </tr>
         {% endfor %}
