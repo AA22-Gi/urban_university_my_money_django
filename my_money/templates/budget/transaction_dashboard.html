@@ -17,7 +17,14 @@
             <th>Тип транзакции</th>
             <th>Дата</th>
         </tr>
-
+        {% for transaction in context.all_transactions %}
+        <tr>
+            <td>{{ transaction }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.transaction_type }}</td>
+            <td>{{ transaction.date }}</td>
+        </tr>
+        {% endfor %}
     </table>
 
 </body>
