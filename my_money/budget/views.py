@@ -1,5 +1,8 @@
 from django.shortcuts import render
-
+from .models import Transaction
 
 def  transaction_dashboard(request):
-    return render(request, 'budget/transaction_dashboard.html')
+    # noinspection PyUnresolvedReferences
+    transactions = Transaction.objects.all()
+
+    return render(request, 'budget/transaction_dashboard.html', {'transactions': transactions})
