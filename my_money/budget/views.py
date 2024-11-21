@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Transaction
-
+from .forms import TransactionForm
+from django.shortcuts import get_object_or_404
 
 def transaction_dashboard(request):
     """
@@ -30,5 +31,13 @@ def transaction_dashboard(request):
 
 
 def edit_transaction(request, id_transaction):
-    pass
+    transaction = get_object_or_404(Transaction, id=id_transaction)
+    if request.method == 'POST':
+        form = TransactionForm(request.POST, instance=transaction)
+        if form.is_valid():
+            form.save()
+            return redirect('transaction_dashboard')
+    else:
+        form = TransactionForm(instance=transaction)
+    return render(request, 'budget_html/edit_transaction.html', {'form': form})
 
