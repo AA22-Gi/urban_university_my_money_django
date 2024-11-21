@@ -20,5 +20,6 @@ from budget.views import transaction_dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', transaction_dashboard),
+    path('', transaction_dashboard, name='transaction_dashboard'),
+    path('edit_transaction', transaction_dashboard, name='edit_transaction'),
 ]
