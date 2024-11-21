@@ -9,6 +9,13 @@
 </head>
 <body>
     <h1>Редактировать транзакцию</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить изменения</button>
+    <button>Назад</button>
+    </form>
+    <button> <a href="{% url 'transaction_dashboard' %}"> Назад </a> </button>
 
 </body>
 </html>
