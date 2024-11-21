@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from budget.views import transaction_dashboard
+from budget.views import transaction_dashboard, edit_transaction
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', transaction_dashboard, name='transaction_dashboard'),
-    path('edit_transaction', transaction_dashboard, name='edit_transaction'),
+    path('edit_transaction/<int:id_transaction>/', edit_transaction, name='edit_transaction'),
 ]
