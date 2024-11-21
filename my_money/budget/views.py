@@ -31,6 +31,21 @@ def transaction_dashboard(request):
 
 
 def edit_transaction(request, id_transaction):
+    """
+    Обрабатывает редактирование существующей транзакции.
+
+    Эта функция получает транзакцию по ее идентификатору,
+    отображает форму редактирования и сохраняет изменения, если форма валидна.
+    В случае успешного сохранения происходит перенаправление на панель управления транзакциями.
+
+    Параметры:
+        request (HttpRequest): Объект запроса, содержащий информацию о текущем запросе.
+        id_transaction (int): Идентификатор транзакции, которую необходимо редактировать.
+
+    Возвращает:
+        HttpResponse: Ответ с шаблоном 'budget_html/edit_transaction.html',
+                      содержащим форму для редактирования транзакции.
+    """
     transaction = get_object_or_404(Transaction, id=id_transaction)
     if request.method == 'POST':
         form = TransactionForm(request.POST, instance=transaction)
