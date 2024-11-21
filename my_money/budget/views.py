@@ -26,4 +26,9 @@ def transaction_dashboard(request):
                'all_expenses': all_expenses,
                'balance': balance}
 
-    return render(request, 'budget/transaction_dashboard.html', {'context': context})
+    return render(request, 'budget_html/transaction_dashboard.html', {'context': context})
+
+
+def edit_transaction(request, id_transaction):
+    pass
+
