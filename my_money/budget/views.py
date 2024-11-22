@@ -3,6 +3,7 @@ from .models import Transaction
 from .forms import TransactionForm
 from django.shortcuts import get_object_or_404
 
+
 def transaction_dashboard(request):
     """
     Отображает панель управления транзакциями и информацию о балансе пользователя.
@@ -31,7 +32,15 @@ def transaction_dashboard(request):
 
 
 def add_transaction(request):
-    return (request, 'budget_html/add_transaction.html')
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('transaction_dashboard')
+    else:
+        form = TransactionForm()
+    return render(request, 'budget_html/add_transaction.html', {'form': form})
+
 
 def edit_transaction(request, id_transaction):
     """
@@ -58,4 +67,3 @@ def edit_transaction(request, id_transaction):
     else:
         form = TransactionForm(instance=transaction)
     return render(request, 'budget_html/edit_transaction.html', {'form': form})
-
