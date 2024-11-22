@@ -25,7 +25,7 @@
             <td>{{ transaction.amount }}</td>
             <td>{{ transaction.get_transaction_type_display }}</td>
             <td>{{ transaction.date }}</td>
-            <td><a href="{% url 'edit_transaction' transaction.id %}">Редактировать</a></td>
+            <td><button><a href="{% url 'edit_transaction' transaction.id %}">Редактировать</a></button></td>
         </tr>
         {% endfor %}
     </table>
