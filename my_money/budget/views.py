@@ -30,6 +30,9 @@ def transaction_dashboard(request):
     return render(request, 'budget_html/transaction_dashboard.html', {'context': context})
 
 
+def add_transaction(request):
+    return (request, 'budget_html/add_transaction.html')
+
 def edit_transaction(request, id_transaction):
     """
     Обрабатывает редактирование существующей транзакции.
