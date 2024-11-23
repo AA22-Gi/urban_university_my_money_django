@@ -89,4 +89,4 @@ def delete_transaction(request, id_transaction):
         transaction.delete()
         return redirect('transaction_dashboard')
 
-    return render(request, 'budget_html/confirm_delete.html', {'transaction': transaction})
+    return render(request, 'budget_html/delete_transaction.html', {'transaction': transaction})
