@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить транзакцию</title>
+    <!-- Подключение CSS Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h2>Удалить транзакцию</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit">Удалить</button>
+    </form>
+    <button><a href="{% url 'transaction_dashboard' %}"> Отмена </a></button>
+
+</body>
+</html>
