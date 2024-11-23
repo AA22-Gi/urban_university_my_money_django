@@ -81,3 +81,12 @@ def edit_transaction(request, id_transaction):
     else:
         form = TransactionForm(instance=transaction)
     return render(request, 'budget_html/edit_transaction.html', {'form': form})
+
+
+def delete_transaction(request, id_transaction):
+    transaction = get_object_or_404(Transaction, id=id_transaction)
+    if request.method == 'POST':
+        transaction.delete()
+        return redirect('transaction_dashboard')
+
+    return render(request, 'budget_html/confirm_delete.html', {'transaction': transaction})
