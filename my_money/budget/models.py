@@ -1,6 +1,7 @@
 from django.db import models
 from ..users.models import User
 
+
 class Transaction(models.Model):
     """
     Модель для представления финансовых транзакции.
