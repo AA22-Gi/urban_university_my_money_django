@@ -44,6 +44,7 @@
    
   5. Выполните миграции базы данных:
      ```bash
+     python manage.py makemigrations
      python manage.py migrate
      ```
    
