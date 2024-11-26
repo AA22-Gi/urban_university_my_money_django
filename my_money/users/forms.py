@@ -1,13 +1,8 @@
 from django import forms
+from .models import User
 
-class LoginForm(forms.Form):
-    """
-    Форма для входа пользователя.
 
-    Поля:
-    - email: Адрес электронной почты пользователя.
-    - password: Пароль пользователя (отображается как текст).
-    """
-    email = forms.EmailField(label='Email', max_length=50)
-    password = forms.CharField(label='Пароль', widget=forms.TextInput)
-
+class UserRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'age', 'email']
