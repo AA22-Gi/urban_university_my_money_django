@@ -8,14 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Авторизация</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Войти</button>
-        </form>
-        <p>Еще нет аккаунта? <a href="{}">Зарегистрируйтесь</a></p>
-    </div>
+    <h2>Авторизация</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+    <p>Еще нет аккаунта? <a href="{% url 'register' %}">Зарегистрируйтесь</a></p>
 </body>
 </html>
