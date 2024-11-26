@@ -27,7 +27,7 @@ def transaction_dashboard(request):
                'all_expenses': all_expenses,
                'balance': balance}
 
-    return render(request, 'budget_html/transaction_dashboard.html', {'context': context})
+    return render(request, 'budget/transaction_dashboard.html', {'context': context})
 
 
 def add_transaction(request):
@@ -52,7 +52,7 @@ def add_transaction(request):
             return redirect('transaction_dashboard')
     else:
         form = TransactionForm()
-    return render(request, 'budget_html/add_transaction.html', {'form': form})
+    return render(request, 'budget/add_transaction.html', {'form': form})
 
 
 def edit_transaction(request, id_transaction):
@@ -79,7 +79,7 @@ def edit_transaction(request, id_transaction):
             return redirect('transaction_dashboard')
     else:
         form = TransactionForm(instance=transaction)
-    return render(request, 'budget_html/edit_transaction.html', {'form': form})
+    return render(request, 'budget/edit_transaction.html', {'form': form})
 
 
 def delete_transaction(request, id_transaction):
@@ -108,4 +108,4 @@ def delete_transaction(request, id_transaction):
         transaction.delete()
         return redirect('transaction_dashboard')
 
-    return render(request, 'budget_html/delete_transaction.html', {'transaction': transaction})
+    return render(request, 'budget/delete_transaction.html', {'transaction': transaction})
