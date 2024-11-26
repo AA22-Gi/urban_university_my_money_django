@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserLoginForm
 
 
 def home(request):
@@ -8,12 +8,12 @@ def home(request):
 
 def login(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = UserLoginForm(request.POST)
         if form.is_valid():
             # Обработка данных, аутентификация пользователя и т.п.
             return redirect('transaction_dashboard')  # Перенаправление на домашнюю страницу
     else:
-        form = UserRegistrationForm()
+        form = UserLoginForm()
 
     return render(request, 'users/login.html', {'form': form})
 
