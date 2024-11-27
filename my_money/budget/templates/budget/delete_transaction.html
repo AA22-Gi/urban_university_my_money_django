@@ -11,13 +11,14 @@
     <h2>Удалить транзакцию</h2>
     <p>
         Вы уверены, что хотите удалить транзакцию
-         <b>"{{ transaction }}: {{ transaction.amount }} руб.</b> ({{ transaction.date }})"?
+         <b>"{{ transaction }}руб?
+         <br> (Дата: {{ transaction.date }})
     </p>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Да, удалить</button>
     </form>
-    <button><a href="{% url 'transaction_dashboard' %}"> Нет, отмена </a></button>
+    <button><a href="{% url 'transaction_dashboard' %}"> Нет, вернуться к панели управления</a></button>
 
 </body>
 </html>
