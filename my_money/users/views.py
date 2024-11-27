@@ -1,29 +1,38 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, UserLoginForm
+from django.contrib import messages
+from .forms import RegisterForm
+from django.contrib.auth import authenticate, login, logout
 
 
 def home(request):
     return render(request, 'users/home.html')
 
 
-def login(request):
-    if request.method == 'POST':
-        form = UserLoginForm(request.POST)
-        if form.is_valid():
-            # Обработка данных, аутентификация пользователя и т.п.
-            return redirect('transaction_dashboard')  # Перенаправление на домашнюю страницу
-    else:
-        form = UserLoginForm()
-
-    return render(request, 'users/login.html', {'form': form})
-
-
 def register(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')  # Перенаправление на страницу авторизации после регистрации
+            form.save()  # Сохраняет нового пользователя
+            return redirect('login')  # Перенаправляет на страницу входа или другую страницу
     else:
-        form = UserRegistrationForm()
+        form = RegisterForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('transaction_dashboard')
+        else:
+            messages.error(request, "Неверные учетные данные.")
+    return render(request, 'users/login.html')
+
+
+def user_exit(request):
+    logout(request)
+    messages.info(request, "Вы успешно вышли из системы.")
+    return redirect('home')  # Перенаправляем на домашнюю страницу или страницу входа
