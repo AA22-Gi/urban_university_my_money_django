@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Личный бюджет</h1>
-    <h2>Баланс: {{ context.balance }}</h2>
+<div class="container mt-5">
+    <h1 class="text-center">Личный бюджет</h1>
+    <h2 class="text-center">Баланс: {{ context.balance }}</h2>
 
+    <table class="table table-striped mt-4">
     <h3>Транзакции</h3>
-    <table>
         <tr>
             <th>Название</th>
             <th>Сумма</th>
@@ -25,13 +26,13 @@
             <td>{{ transaction.amount }} руб.</td>
             <td>{{ transaction.get_transaction_type_display }}</td>
             <td>{{ transaction.date }}</td>
-            <td><button><a href="{% url 'edit_transaction' transaction.id %}">Редактировать</a></button></td>
-            <td><button><a href="{% url 'delete_transaction' transaction.id %}">Удалить</a></button></td>
+            <td><a href="{% url 'edit_transaction' transaction.id %}" class="btn btn-warning btn-sm">Редактировать</a></td>
+            <td><a href="{% url 'delete_transaction' transaction.id %}" class="btn btn-danger btn-sm">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>
-    <button><a href="{% url 'add_transaction' %}">Добавить транзакцию</a></button>
-    <br>
-    <button><a href="{% url 'exit' %}">Выйти из системы</a></button>
+    <a href="{% url 'add_transaction' %}" class="btn btn-primary">Добавить транзакцию</a>
+    <a href="{% url 'exit' %}" class="btn btn-secondary">Выйти из системы</a>
+</div>
 </body>
 </html>
