@@ -16,8 +16,9 @@ def transaction_dashboard(request):
     Возвращает:
         HttpResponse: Ответ, содержащий шаблон с контекстом.
     """
+    # Получаем транзакции только для текущего пользователя
     # noinspection PyUnresolvedReferences
-    transactions = Transaction.objects.all()
+    transactions = Transaction.objects.filter(user=request.user)
     all_income = sum(transaction.amount for transaction in transactions if transaction.transaction_type == 'income')
     all_expenses = sum(transaction.amount for transaction in transactions if transaction.transaction_type == 'expense')
     balance = all_income - all_expenses
@@ -48,6 +49,8 @@ def add_transaction(request):
     if request.method == 'POST':
         form = TransactionForm(request.POST)
         if form.is_valid():
+            transaction = form.save(commit=False)
+            transaction.user = request.user  # Устанавливаем текущего пользователя
             form.save()
             return redirect('transaction_dashboard')
     else:
