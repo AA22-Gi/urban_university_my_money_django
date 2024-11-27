@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h2>Здравствуйте!</h2>
-    <h4>Добро пожаловать на основную страницу приложения "My_money"</h4>
-    <h5>My_money - это приложение для учета личных финансов.</h5>
-    <br>
-    <h6>Для дальнейшей работы, пожалуйста аторизуйтесь</h6>
-    <h6>или зарегистрируйтесь, если не сделали этого ранее</h6>
-
-    <td><button><a href="{% url 'login' %}">Авторизоваться</a></button></td>
-    <td><button><a href="{% url 'register' %}">Зарегистрироваться</a></button></td>
+<div class="container mt-5 text-center">
+    <h1>Добро пожаловать в приложение учета личных финансов!</h1>
+    <a href="{% url 'register' %}" class="btn btn-primary">Регистрация</a>
+    <a href="{% url 'login' %}" class="btn btn-secondary">Вход</a>
+</div>
 </body>
 </html>
