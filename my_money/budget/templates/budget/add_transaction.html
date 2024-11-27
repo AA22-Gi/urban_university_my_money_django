@@ -1,21 +1,13 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить транзакцию</title>
-    <!-- Подключение CSS Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-5">
-    <h2 class="text-center">Добавить транзакцию</h2>
-    <form method="post" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-    </form>
-    <a href="{% url 'transaction_dashboard' %}" class="btn btn-secondary"> Назад </a>
-</div>
-</body>
-</html>
+{% extends 'budget/base.html' %}
+
+{% block title %}Добавить транзакцию{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Добавить транзакцию</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>
+<a href="{% url 'transaction_dashboard' %}" class="btn btn-secondary">Назад</a>
+{% endblock %}
