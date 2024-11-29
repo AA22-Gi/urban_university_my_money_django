@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -56,17 +56,14 @@ def login_view(request):
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы входа.
     """
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('transaction_dashboard')
-        else:
-            messages.error(request, "Неверные учетные данные.")
+    form = LoginForm(request, data=request.POST or None)  # Создаем форму, даже если это GET-запрос
 
-    return render(request, 'users/login.html')
+    if request.method == 'POST' and form.is_valid():  # Проверяем, валидна ли форма
+        user = form.get_user()  # Получаем пользователя из формы
+        login(request, user)  # Входим в систему
+        return redirect('transaction_dashboard')  # Перенаправление на дашборд
+
+    return render(request, 'users/login.html', {'form': form})
 
 
 def user_exit(request):
