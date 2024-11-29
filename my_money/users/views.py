@@ -71,8 +71,9 @@ def user_exit(request):
 
     Args:
         request (HttpRequest): Объект запроса.
+
     Returns:
         HttpResponse: Перенаправляет на домашнюю страницу после выхода.
     """
     logout(request)
-    return redirect('home')  # Перенаправляем на домашнюю страницу или страницу входа
+    return redirect('home')  # Перенаправляем на домашнюю страницу
