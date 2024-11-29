@@ -48,10 +48,12 @@ def login_view(request):
 
     Args:
         request (HttpRequest): Объект запроса.
+
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы входа.
     """
     form = LoginForm(request, data=request.POST or None)  # Создаем форму, даже если это GET-запрос
+
     if request.method == 'POST' and form.is_valid():  # Проверяем, валидна ли форма
         user = form.get_user()  # Получаем пользователя из формы
         login(request, user)  # Входим в систему
