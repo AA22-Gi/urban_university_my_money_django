@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 
 
 def home(request):
@@ -31,13 +31,11 @@ def register(request):
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы регистрации.
     """
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()  # Сохраняет нового пользователя
-            return redirect('login')  # Перенаправляет на страницу входа
-    else:
-        form = RegisterForm()
+    form = RegisterForm(request.POST or None)  # Создаем форму, даже если это GET-запрос
+
+    if request.method == 'POST' and form.is_valid():  # Проверяем, валидна ли форма
+        form.save()  # Сохраняет нового пользователя
+        return redirect('login')  # Перенаправляет на страницу входа
 
     return render(request, 'users/register.html', {'form': form})
 
