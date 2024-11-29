@@ -9,7 +9,6 @@ def home(request):
 
     Args:
         request (HttpRequest): Объект запроса.
-
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном домашней страницы.
     """
@@ -26,7 +25,6 @@ def register(request):
 
     Args:
         request (HttpRequest): Объект запроса.
-
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы регистрации.
     """
@@ -49,7 +47,6 @@ def login_view(request):
 
     Args:
         request (HttpRequest): Объект запроса.
-
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы входа.
     """
@@ -72,7 +69,6 @@ def user_exit(request):
 
     Args:
         request (HttpRequest): Объект запроса.
-
     Returns:
         HttpResponse: Перенаправляет на домашнюю страницу после выхода.
     """
