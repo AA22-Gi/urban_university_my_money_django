@@ -9,6 +9,7 @@ def home(request):
 
     Args:
         request (HttpRequest): Объект запроса.
+
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном домашней страницы.
     """
@@ -21,14 +22,15 @@ def register(request):
 
     Если запрос является POST-запросом, то форма регистрации обрабатывается.
     В случае успешной валидации пользователя перенаправляют на страницу входа.
-    В противном случае отображается форма регистрации.
 
     Args:
         request (HttpRequest): Объект запроса.
+
     Returns:
         HttpResponse: Ответ с отрендеренным шаблоном формы регистрации.
     """
     form = RegisterForm(request.POST or None)  # Создаем форму, даже если это GET-запрос
+
     if request.method == 'POST' and form.is_valid():  # Проверяем, валидна ли форма
         form.save()  # Сохраняет нового пользователя
         return redirect('login')  # Перенаправляет на страницу входа
