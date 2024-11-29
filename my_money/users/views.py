@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login, logout
 
@@ -78,5 +77,4 @@ def user_exit(request):
         HttpResponse: Перенаправляет на домашнюю страницу после выхода.
     """
     logout(request)
-    messages.info(request, "Вы успешно вышли из системы.")
     return redirect('home')  # Перенаправляем на домашнюю страницу или страницу входа
