@@ -36,6 +36,19 @@ class RegisterForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    """
+    Форма для аутентификации пользователя.
+
+    Эта форма используется для входа пользователя в систему.
+    Она наследуется от AuthenticationForm и включает в себя
+    поля для имени пользователя и пароля.
+
+    Атрибуты:
+        model: Модель, связанная с формой (User ).
+        fields: Список полей, которые будут отображаться в форме.
+        labels: Метки для полей формы, переведенные на русский язык.
+    """
+
     class Meta:
         model = User
         fields = ['username', 'password1']
