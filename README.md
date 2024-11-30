@@ -82,24 +82,24 @@
 
 ### 1. Приветственная страница
 
-[Приветственная страница](images/welcome_page.png)
+![Приветственная страница](images/welcome_page.png)
 
 ### 2. Регистрация пользователя
 
-[Регистрация пользователя](images/registration_page.png)
+![Регистрация пользователя](images/registration_page.png)
 
 ### 3. Панель управления транзакциями
 
-[Панель управления транзакциями](images/transaction_dashboard.png)
+![Панель управления транзакциями](images/transaction_dashboard.png)
 
 ### 4. Добавление новой транзакции
 
-[Добавление новой транзакции](images/add_transaction.png)
+![Добавление новой транзакции](images/add_transaction.png)
 
 ### 5. Редактирование транзакции
 
-[Редактирование транзакции](images/edit_transaction.png)
+![Редактирование транзакции](images/edit_transaction.png)
 
 ### 6. Удаление транзакции
 
-[Удаление транзакции](images/delete_transaction.png)
+![Удаление транзакции](images/delete_transaction.png)
